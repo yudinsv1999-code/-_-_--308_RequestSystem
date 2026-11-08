@@ -44,7 +44,40 @@ Python 3.12+, SQLite, Git.
 
 ## Статус проекта
 В разработке (лабораторные работы 1–5).
-…...
+……
+---
+
+## 📚 Навигация по лабораторным работам (ЛР 1-5)
+
+Вся документация и результаты выполнения находятся в репозитории:
+
+* **Лабораторная работа №1 (ТЗ и Use Case):**
+  * [Техническое задание (TZ.md)](docs/TZ.md)
+  * [Use Case диаграмма](docs/usecase.png)
+  * [AI-журнал](docs/ai_log.md)
+
+* **Лабораторная работа №2 (Git):**
+  * История коммитов и ветки (см. вкладку Commits и Branches на GitHub)
+
+* **Лабораторная работа №3 (Архитектура):**
+  * [Описание архитектуры](docs/architecture/architecture.md)
+  * [Диаграмма слоёв](docs/architecture/layers.png)
+  * [Диаграмма компонентов](docs/architecture/components.png)
+  * [ER-диаграмма БД](docs/architecture/er_diagram.png)
+  * [AI-журнал по архитектуре](docs/architecture/ai_architecture_log.md)
+
+* **Лабораторная работа №4 (Интерфейс):**
+  * [Описание экранов и UX-чек-лист](docs/ui/ui_description.md)
+  * [AI-журнал по UI](docs/ui/ai_ui_log.md)
+  * Прототипы (HTML): [login.html](docs/ui/login.html), [list.html](docs/ui/list.html), [create.html](docs/ui/create.html), [view.html](docs/ui/view.html), [edit.html](docs/ui/edit.html)
+  * *Скриншоты экранов находятся в папке `docs/ui/`*
+
+* **Лабораторная работа №5 (База данных):**
+  * [Скрипт создания таблиц (schema.sql)](src/database/schema.sql)
+  * [Тестовые данные (seed.sql)](src/database/seed.sql)
+  * [SQL-запросы (queries.sql)](src/database/queries.sql)
+  * [AI-журнал по БД](src/database/ai_db_log.md)
+  * *Скриншоты выполнения SQL-запросов находятся в папке `docs/screenshots/`*
 
 
 
