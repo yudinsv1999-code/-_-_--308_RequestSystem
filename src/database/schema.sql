@@ -1,19 +1,26 @@
-﻿CREATE TABLE Statuses (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE
-);
+-- Порядок важен: сначала таблицы без внешних ключей
 CREATE TABLE Categories (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE
 );
+
 CREATE TABLE Users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     full_name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     role TEXT NOT NULL CHECK(role IN ('admin', 'operator', 'executor', 'applicant'))
 );
+
+-- Добавлено: таблица статусов (на неё ссылается Requests)
+CREATE TABLE Statuses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE
+);
+
+-- Requests создаётся после Statuses и Categories
 CREATE TABLE Requests (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    number TEXT NOT NULL UNIQUE,              -- номер заявки (из ТЗ ЛР1)
     title TEXT NOT NULL,
     description TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -26,6 +33,7 @@ CREATE TABLE Requests (
     FOREIGN KEY (status_id) REFERENCES Statuses(id),
     FOREIGN KEY (category_id) REFERENCES Categories(id)
 );
+
 CREATE TABLE Comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     request_id INTEGER NOT NULL,
