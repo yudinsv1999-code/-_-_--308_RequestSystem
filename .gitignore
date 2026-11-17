@@ -8,4 +8,4 @@ Thumbs.db
 .DS_Store
 *.db
 *.sqlite
-.env
+.env*.db
