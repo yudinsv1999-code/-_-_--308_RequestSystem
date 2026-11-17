@@ -40,7 +40,7 @@ def test_applicant_cannot_assign_executor():
 
 def test_operator_assigns_executor():
     op = actor("sidorova@example.com")
-    r = svc.assign_executor(op, 1, 2)
+    r = svc.assign_executor(op, 2, 2)   # заявка 2 без исполнителя
     assert r["executor_id"] == 2
 
 
@@ -78,4 +78,24 @@ def test_applicant_cannot_change_status():
 def test_empty_comment_rejected():
     op = actor("sidorova@example.com")
     with pytest.raises(ValidationError):
-        svc.add_comment(op, 1, "")
+        svc.add_comment(op, 1, "") 
+
+
+
+def test_reassign_same_executor_conflict():
+    from src.services.exceptions import ConflictError
+    op = actor("sidorova@example.com")
+    svc.assign_executor(op, 2, 2)          # первое назначение
+    with pytest.raises(ConflictError):
+        svc.assign_executor(op, 2, 2)      # повторное — конфликт
+
+def test_create_with_unknown_category():
+    a = actor("ivanov@example.com")
+    with pytest.raises(ValidationError):
+        svc.create_request(a, "Тест", "Описание", 999)
+
+
+def test_change_to_unknown_status():
+    op = actor("sidorova@example.com")
+    with pytest.raises(ValidationError):
+        svc.change_status(op, 1, 999)

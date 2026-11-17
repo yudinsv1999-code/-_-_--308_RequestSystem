@@ -7,7 +7,10 @@ class NotFoundError(AppError):
 class ForbiddenError(AppError):
     """Недостаточно прав."""
 
-class InvalidTransitionError(AppError):
+class ConflictError(AppError):
+    """Конфликт состояния (повторное назначение, недопустимый переход)."""
+
+class InvalidTransitionError(ConflictError):
     """Недопустимый переход статуса."""
 
 class ValidationError(AppError):
